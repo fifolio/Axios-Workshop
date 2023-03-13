@@ -1,16 +1,30 @@
 // Import Axios
 const axios = require("axios");
 
-// ----------------[Configuration Defaults]-----------------
-axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
-axios
-  .get("posts")
-  .then((res) => {
-    console.log(res.data[0].title);
+// ----------------[Multiple Requests & Spread]-----------------
+const user = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+});
+const posts = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+});
+axios.all([user.get("/users"), posts.get("/posts")]).then(
+  axios.spread((usersRes, postsRes) => {
+    console.log(usersRes.data[0]);
+    console.log(postsRes.data[0]);
   })
-  .catch((err) => {
-    console.log(err);
-  });
+);
+
+// ----------------[Configuration Defaults]-----------------
+// axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
+// axios
+//   .get("posts")
+//   .then((res) => {
+//     console.log(res.data[0].title);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // ----------------[Creating an instance]-----------------
 
