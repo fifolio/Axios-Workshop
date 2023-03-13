@@ -1,6 +1,36 @@
 // Import Axios
 const axios = require("axios");
 
+// ----------------[use Async/await]-----------------
+const getPosts = async () => {
+  try {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    console.log(res.data[2]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getPosts();
+// ----------------[ALIASES (POST)]-----------------
+axios.post("https://jsonplaceholder.typicode.com/posts", {
+  title: "my new blog",
+  body: "this is so good post",
+});
+// .then((res) => console.log(res.data))
+// .catch((err) => console.log(err));
+
+// ----------------[ALIASES (GET)]-----------------
+axios.get("https://jsonplaceholder.typicode.com/posts", {
+  params: {
+    id: 6,
+  },
+});
+// .then((res) => {
+//   console.log(res.data);
+// })
+// .catch((err) => console.log(err));
+
 // ----------------[POST]-----------------
 const userId = 1996,
   title = "My Best Post",
@@ -15,9 +45,9 @@ axios({
     title: title,
     body: body,
   },
-})
-  .then((res) => console.log(res.data))
-  .catch((err) => console.log(err));
+});
+// .then((res) => console.log(res.data))
+// .catch((err) => console.log(err));
 
 // ----------------[GET]-----------------
 // Call Axios to fetch data
