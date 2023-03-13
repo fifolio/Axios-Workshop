@@ -1,6 +1,34 @@
 // Import Axios
 const axios = require("axios");
 
+// ----------------[Creating an instance]-----------------
+
+// const posts = axios.create({
+//   baseURL: "https://jsonplaceholder.typicode.com/posts",
+// });
+// posts
+//   .post("", {
+//     data: {
+//       title: "MY New post title",
+//       body: "body is my home",
+//     },
+//   })
+//   .then((res) => {
+//     console.log(res.data);
+//   })
+//   .catch((err) => console.log(err));
+
+// const todo = axios.create({
+//   baseURL: "https://jsonplaceholder.typicode.com",
+// });
+
+// todo
+//   .get("/posts")
+//   .then((res) => {
+//     console.log(res.data[1].title);
+//   })
+//   .catch((err) => console.log(`This is you get Err: ${err}`));
+
 // ----------------[use Async/await]-----------------
 const getPosts = async () => {
   try {
@@ -11,7 +39,7 @@ const getPosts = async () => {
   }
 };
 
-getPosts();
+// getPosts();
 // ----------------[ALIASES (POST)]-----------------
 axios.post("https://jsonplaceholder.typicode.com/posts", {
   title: "my new blog",
