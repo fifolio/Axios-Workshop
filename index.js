@@ -1,6 +1,17 @@
 // Import Axios
 const axios = require("axios");
 
+// ----------------[Configuration Defaults]-----------------
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
+axios
+  .get("posts")
+  .then((res) => {
+    console.log(res.data[0].title);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 // ----------------[Creating an instance]-----------------
 
 // const posts = axios.create({
